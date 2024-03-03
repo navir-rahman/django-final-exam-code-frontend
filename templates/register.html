@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Prologue by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<div id="header">
+
+				<div class="top">
+
+					<!-- Logo -->
+						<div id="logo">
+							<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
+							<h1 id="title">Jane Doe</h1>
+							<p>Hyperspace Engineer</p>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="#login" id="top-link"><span class="icon solid fa-user">Login</span></a></li>
+								<li><a href="./templates/register.html" id="portfolio-link"><span class="icon solid fa-th">Register</span></a></li>
+								<li><a href="#" id="logout"><span class="icon solid fa-user">Log out</span></a></li>
+								
+							</ul>
+						</nav>
+
+				</div>
+
+				<div class="bottom">
+
+					<!-- Social Icons -->
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+							<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+
+				</div>
+
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+				<!-- Contact -->
+					<section id="login" class="four">
+						<div class="container">
+
+							<header>
+								<h2>Register</h2>
+							</header>
+
+							<p>Register Your Account </p>
+
+							<form method="POST"  id ='register_submit' enctype="multipart/form-data" novalidate>
+								<div class="row">
+									<div class="col-6 col-12-mobile"><input type="text" name="username" placeholder="User Name" /></div>
+									<div class="col-6 col-12-mobile"><input type="text" name="first_name" placeholder="First Name" /></div>
+									<div class="col-6 col-12-mobile"><input type="text" name="last_name" placeholder="Last Name" /></div>
+									<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="email" /></div>
+									<div class="col-6 col-12-mobile"><input type="password" name="password" placeholder="password" /></div>
+									<div class="col-6 col-12-mobile"><input type="password" name="confirm_password" placeholder="confirm password" /></div>
+									<div class="col-6 col-12-mobile">
+										<select class="form-control" name="user_role">
+											<option value="doctor">Doctor</option>
+											<option value="patient">Patient</option>										  
+										</select>
+									</div>
+									<div class="col-6 col-12-mobile"><input type="text" name="past_medical_reports" placeholder="Past medical reports" /></div>
+									<div class="col-6 col-12-mobile"><input type="number" name="nid" placeholder="NID" /></div>
+									<div class="col-6 col-12-mobile"><input type="date" name="date_of_birth" placeholder="Date of birth" /></div>
+									<a href="#" class="" > Forgot password</a>
+									<div class="col-12">
+										<input type="submit" value="Submit"  />
+									</div>
+								</div>
+							</form>
+
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<div id="footer">
+
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../django_code/main.js"></script>
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+			<script>
+				
+				// sign up
+				document.getElementById('register_submit').addEventListener('submit', function(event) {
+					event.preventDefault();
+					const url = 'http://127.0.0.1:8000/user/register/';
+
+					let username = event.target.username.value
+					let first_name = event.target.first_name.value
+					let last_name = event.target.last_name.value
+					let email = event.target.email.value
+					let password = event.target.password.value
+					let confirm_password = event.target.confirm_password.value
+					let nid = event.target.nid.value
+					let user_role = event.target.user_role.value
+					let past_medical_reports = event.target.past_medical_reports.value
+					let date_of_birth = event.target.date_of_birth.value
+
+					let data = {
+									"username": username,
+									"first_name": first_name,
+									"last_name": last_name,
+									"email": email,
+									"password": password,
+									"confirm_password": confirm_password,
+									"nid": nid,
+									"user_role": user_role,
+									"past_medical_reports": past_medical_reports,
+									"date_of_birth": date_of_birth,
+								}
+								
+
+					fetchRequest(data, url);
+
+				});
+
+			</script>
+	</body>
+</html>

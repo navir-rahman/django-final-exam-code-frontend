@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Prologue by HTML5 UP</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="is-preload">
+  <!-- Header -->
+  <div id="header">
+    <div class="top">
+      <!-- Logo -->
+      <div id="logo">
+        <span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
+        <h1 id="title">Jane Doe</h1>
+        <p>Hyperspace Engineer</p>
+      </div>
+
+      <!-- Nav -->
+      <nav id="nav">
+        <ul>
+          <li>
+            <a href="../index.html" id="top-link"><span class="icon solid fa-home">Home</span></a>
+          </li>
+          <li>
+            <a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a>
+          </li>
+          <li>
+            <a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a>
+          </li>
+          <li>
+            <a href="" id="contact-link"><span class="icon solid fa-envelope">Vaccine Campaign</span></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="bottom">
+      <!-- Social Icons -->
+      <ul class="icons">
+        <li>
+          <a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a>
+        </li>
+        <li>
+          <a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a>
+        </li>
+        <li>
+          <a href="#" class="icon brands fa-github"><span class="label">Github</span></a>
+        </li>
+        <li>
+          <a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a>
+        </li>
+        <li>
+          <a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div id="main">
+
+    <section style="padding: 0;">
+      <div class="container_for_campgain  p-10 flex">
+        <form class="w-3/5 p-10" id="add_campaign_form" enctype="multipart/form-data">
+          <div class="space-y-12">
+
+            <div class="border-b border-gray-900/10 pb-12">
+              <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
+              <p class="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
+
+
+
+              <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="sm:col-span-3">
+                  <label for="v_name" class="block text-sm font-medium leading-6 text-gray-900">Vaccine name</label>
+                  <div class="mt-2">
+                    <input value="" type="text" name="v_name" id="v_name" autocomplete="given-name"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  </div>
+                </div>
+
+                <div class="sm:col-span-3">
+                  <label for="campaign_name" class="block text-sm font-medium leading-6 text-gray-900">Campaign
+                    name</label>
+                  <div class="mt-2">
+                    <input value="" type="text" name="campaign_name" id="campaign_name" autocomplete="family-name"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  </div>
+                </div>
+                <div class="sm:col-span-3">
+                  <label for="dose_count" class="block text-sm font-medium leading-6 text-gray-900">Dose count</label>
+                  <div class="mt-2">
+                    <input value="" type="number" name="dose_count" id="dose_count" autocomplete="family-name"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  </div>
+                </div>
+                <div class="sm:col-span-3">
+                  <label for="status" class="block text-sm font-medium leading-6 text-gray-900">Status</label>
+                  <div class="flex items-center gap-x-3">
+                    <input value="" id="status" name="status" type="checkbox"
+                      class="h-4 w-4 border-green-300 text-indigo-600 focus:ring-green-600">
+                    <label class="block text-sm font-medium leading-6 text-gray-900">No push notifications</label>
+                  </div>
+                </div>
+
+
+                <div class="col-span-full">
+                  <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">photo</label>
+                  <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                    <div class="text-center">
+                      <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
+                        aria-hidden="true">
+                        <path fill-rule="evenodd"
+                          d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                          clip-rule="evenodd" />
+                      </svg>
+                      <div class="mt-4 flex text-sm leading-6 text-gray-600">
+                        <label for="image"
+                          class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                          <span>Upload a file</span>
+                          <input value="" id="image" name="image" accept="image/*" type="file" class="sr-only">
+                        </label>
+                        <p class="pl-1">or drag and drop</p>
+                      </div>
+                      <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div class="col-span-full">
+                  <label for="description" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
+                  <div class="mt-2">
+                    <textarea value="" id="description" name="description" rows="3"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+                <div class="sm:col-span-3">
+                  <label for="status" class="block text-sm font-medium leading-6 text-gray-900">First Dose</label>
+                  <div class="flex items-center gap-x-3">
+                    <input value="" id="first_dose_date" name="first_dose_date" type="date"
+                      class=" border-green-300  focus:ring-green-600">
+                  </div>
+                </div>
+
+
+          </div>
+
+          <div class="flex items-center justify-end gap-x-6">
+            <button type="submit" id="save_form_data"
+              class=" rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save
+            </button>
+            <button type="btn" id = "update_form_data" onclick="update_vaccine()"
+              class="hide rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              Update
+            </button>
+          </div>
+        </form>
+
+        <div class="campgain w-2/5">
+          <div class="mt-8 px-20 scroll-auto">
+            <div class="flow-root">
+              <ul role="list" class="-my-6 divide-y divide-gray-200" id="all_campaigns">
+
+                <li class="flex py-6">
+                  <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                    <img src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg"
+                      alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                      class="h-full w-full object-cover object-center">
+                  </div>
+
+                  <div class="ml-4 flex flex-1 flex-col">
+                    <div>
+                      <div class="flex justify-between text-base font-medium text-gray-900">
+                        <h3>
+                          <a href="#">Throwback Hip Bag</a>
+                        </h3>
+                        <p class="ml-4">$90.00</p>
+                      </div>
+                      <p class="mt-1 text-sm text-gray-500">Salmon</p>
+                    </div>
+                    <div class="flex flex-1 items-end justify-between text-sm">
+                      <p class="text-gray-500">Qty 1</p>
+
+                      <div class="flex">
+                        <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="flex py-6">
+                  <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                    <img src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg"
+                      alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch."
+                      class="h-full w-full object-cover object-center">
+                  </div>
+
+                  <div class="ml-4 flex flex-1 flex-col">
+                    <div>
+                      <div class="flex justify-between text-base font-medium text-gray-900">
+                        <h3>
+                          <a href="#">Medium Stuff Satchel</a>
+                        </h3>
+                        <p class="ml-4">$32.00</p>
+                      </div>
+                      <p class="mt-1 text-sm text-gray-500">Blue</p>
+                    </div>
+                    <div class="flex flex-1 items-end justify-between text-sm">
+                      <p class="text-gray-500">Qty 1</p>
+
+                      <div class="flex">
+                        <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <!-- More products... -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+
+  <!-- Footer -->
+  <div id="footer">
+    <!-- Copyright -->
+    <ul class="copyright">
+      <li>&copy; Untitled. All rights reserved.</li>
+      <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Scripts -->
+  <script src="../django_code/main.js"></script>
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../assets/js/browser.min.js"></script>
+  <script src="../assets/js/breakpoints.min.js"></script>
+  <script src="../assets/js/util.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../django_code/vaccine.js"></script>
+</body>
+
+</html>

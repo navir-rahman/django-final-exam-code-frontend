@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Prologue by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<div id="header">
+
+				<div class="top">
+
+					<!-- Logo -->
+						<div id="logo">
+							<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
+							<h1 id="title">Jane Doe</h1>
+							<p>Hyperspace Engineer</p>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="#login" id="top-link"><span class="icon solid fa-user">Login</span></a></li>
+								<li><a href="./templates/register.html" id="portfolio-link"><span class="icon solid fa-th">Register</span></a></li>
+								<li><a href="#" id="logout"><span class="icon solid fa-user">Log out</span></a></li>
+								<li><a href="./templates/home.html" id="logout"><span class="icon solid fa-user">Home</span></a></li>
+								
+							</ul>
+						</nav>
+
+				</div>
+
+				<div class="bottom">
+
+					<!-- Social Icons -->
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+							<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+
+				</div>
+
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Intro -->
+					<section id="top" class="one dark cover">
+						<div class="container">
+
+							<header>
+								<h2 class="alt">Hi! I'm <strong>Prologue</strong>, a <a href="http://html5up.net/license">free</a> responsive<br />
+								site template designed by <a href="http://html5up.net">HTML5 UP</a>.</h2>
+								<p>Ligula scelerisque justo sem accumsan diam quis<br />
+								vitae natoque dictum sollicitudin elementum.</p>
+							</header>
+
+							<footer>
+								<a href="#login" class="button scrolly">Login to start </a>
+							</footer>
+
+						</div>
+					</section>
+
+
+				<!-- Contact -->
+					<section id="login" class="four">
+						<div class="container">
+
+							<header>
+								<h2>Login</h2>
+							</header>
+
+							<p>Login To Your Account </p>
+
+							<form method="post" id ='login_submit'>
+								<div class="row">
+									<div class="col-12 col-12-mobile"><input type="text" name="username" placeholder="User Name" /></div>
+									<div class="col-12 col-12-mobile"><input type="password" name="password" placeholder="password" /></div>
+									
+									<div class="col-12">
+										<input type="submit" value="Submit"  />
+									</div>
+								</div>
+							</form>
+							<div class="four">
+								<a href="#" class="" > Forgot password  /  </a>
+								<a href="./templates/register.html" id="portfolio-link">  Register</span></a>
+							</div>
+
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<div id="footer">
+
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="./django_code/main.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+			<script>
+				document.getElementById('login_submit').addEventListener('submit', function(event) {
+				event.preventDefault();
+
+				let username = event.target.username.value
+				let password = event.target.password.value
+				let userInfo = {
+					"username": username,
+					"password": password,
+				}
+				console.log(userInfo)
+
+				const url = 'http://127.0.0.1:8000/user/login/';
+				fetchPostRequest(url, userInfo )
+				.then(data => {
+					localStorage.setItem('token', data.token);
+					localStorage.setItem('user_id', data.user_id);
+					localStorage.setItem('user_role', data.user_role);
+					console.log('Token data saved:', data);
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					});
+			})
+
+			// //log out
+			document.getElementById('logout').addEventListener('click', function(event) {
+			    event.preventDefault();
+			    const url = 'http://127.0.0.1:8000/user/logout/';
+			    fetch(url, {
+			        method: 'GET',
+			        headers: {
+						'Authorization': `Bearer ${localStorage.getItem('token')}`,
+			        },
+			    })
+			        .then(response => {
+			        if (response.ok) {
+			            return response.json();
+			        } else {
+			            console.log(response)
+			            throw new Error('Failed to logout: ' + response);
+			        }
+			        })
+			        .then(data => {
+			            localStorage.getItem('token', data.token);
+			            localStorage.removeItem('token');
+			            logged = false;
+			            console.log(data.data);
+			            // window.location.href = '/dashboard';
+
+			        })
+			        .catch(error => {
+			        console.error('Error:', error);
+			        });
+
+			})
+			</script>
+
+	</body>
+</html>

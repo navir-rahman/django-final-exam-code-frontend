@@ -283,70 +283,24 @@
     var currentUrl = window.location.href;
     var searchParams = new URLSearchParams(currentUrl);
     
-   for (let p of searchParams) {
-        id = p[1]
-    } 
-
-    async function fetchData() {
-    try {
-        const response = await fetchGetRequest(`http://127.0.0.1:8000/vaccine/vaccine/${id}/`);
-        console.log(response)
+  //  for (let p of searchParams) {
+  //       id = p[1]
+  //   } 
 
 
-  document.getElementById('v_name').value = response.name
-  document.getElementById('campaign_name').value = response.campaign_name
-  document.getElementById('dose_count').value = response.dose_count
-  document.getElementById('first_dose_date').value = response.first_dose_date
-  document.getElementById('status').value = response.status
-  document.getElementById('description').value = response.description
-  document.getElementById('V_ID').value = id
 
-//   document.getElementById('image').files[0] = response.image
-        // let data = {
-        //     "id": id,
-        //     "name": "Abdur",
-        //     "image": null,
-        //     "description": "asd",
-        //     "dose_count": 2,
-        //     "status": false,
-        //     "campaign_name": "Rahman",
-        //     "first_dose_date": "2024-03-12",
-        //     "second_dose_date": "2024-03-15",
-        //     "initiated_by": 1
-        // }
+window.onload = function () {
 
-
-    } catch (error) {
-        // console.error('Error fetching data:', error);
-    }
+  let fd = {
+    "id": 1,
+    "date_taken": "2024-03-05",
+    "vaccine": 72,
+    "patient": 1
 }
-fetchData();
-
-document.getElementById('add_campaign_form').addEventListener('submit', function (event) {
-  event.preventDefault();
-  if (!token) {
-    console.error('Token not found');
-    return;
-  }
-  // Retrieve form data
-  var formData = new FormData();
-  formData.append('id', document.getElementById('V_ID').value);
-  formData.append('name', document.getElementById('v_name').value);
-  formData.append('campaign_name', document.getElementById('campaign_name').value);
-  formData.append('dose_count', document.getElementById('dose_count').value);
-  formData.append('first_dose_date', document.getElementById('first_dose_date').value);
-  formData.append('status', document.getElementById('status').checked ? 1 : 0);
-  formData.append('description', document.getElementById('description').value);
-  formData.append('image', document.getElementById('image').files[0]);
-  formData.append('initiated_by', 1);
-
-  for (const pair of formData.entries()) {
-    console.log(pair[0], pair[1]);
-  }
 
 
-    const fetchPostRequest2 = (url, data) => {
-    return fetch(url, {
+const fetchPostRequest = (url, data) => {
+    return fetch(`https://django-final-backend.onrender.com/history/all/1/`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json' 
@@ -362,11 +316,13 @@ document.getElementById('add_campaign_form').addEventListener('submit', function
         }
     });
 }
-fetchPostRequest2(`http://127.0.0.1:8000/vaccine/vaccine/${id}/`, formData)
-    .then(response => console.log(response))
+
+fetchPostRequest(1, fd)
 
 
-})
+}
+
+
 </script>
 </body>
 

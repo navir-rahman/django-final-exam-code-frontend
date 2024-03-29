@@ -8,9 +8,9 @@ const user_role = localStorage.getItem('user_role');
 // default variables
 
 // urls
-let vaccineHistory_url = `http://127.0.0.1:8000/history/all/`
-let add_url = `http://127.0.0.1:8000/vaccine/add`
-let all_vaccine_url = 'http://127.0.0.1:8000/vaccine/all_vaccine/'
+let vaccineHistory_url = `https://django-final-backend.onrender.com/history/all/`
+let add_url = `https://django-final-backend.onrender.com/vaccine/add`
+let all_vaccine_url = 'https://django-final-backend.onrender.com/vaccine/all_vaccine/'
 
 
 
@@ -57,48 +57,48 @@ window.onload = function () {
 
 // ADD NEW VACCINE
 
-document.getElementById('add_campaign_form').addEventListener('submit', function (event) {
-  event.preventDefault();
-  if (!token) {
-    console.error('Token not found');
-    return;
-  }
-  // Retrieve form data
-  var formData = new FormData();
-  formData.append('name', document.getElementById('v_name').value);
-  formData.append('campaign_name', document.getElementById('campaign_name').value);
-  formData.append('dose_count', document.getElementById('dose_count').value);
-  formData.append('first_dose_date', document.getElementById('first_dose_date').value);
-  formData.append('status', document.getElementById('status').checked ? 1 : 0);
-  formData.append('description', document.getElementById('description').value);
-  formData.append('image', document.getElementById('image').files[0]);
+// document.getElementById('add_campaign_form').addEventListener('submit', function (event) {
+//   event.preventDefault();
+//   if (!token) {
+//     console.error('Token not found');
+//     return;
+//   }
+//   // Retrieve form data
+//   var formData = new FormData();
+//   formData.append('name', document.getElementById('v_name').value);
+//   formData.append('campaign_name', document.getElementById('campaign_name').value);
+//   formData.append('dose_count', document.getElementById('dose_count').value);
+//   formData.append('first_dose_date', document.getElementById('first_dose_date').value);
+//   formData.append('status', document.getElementById('status').checked ? 1 : 0);
+//   formData.append('description', document.getElementById('description').value);
+//   formData.append('image', document.getElementById('image').files[0]);
 
-  for (const pair of formData.entries()) {
-    console.log(pair[0], pair[1]);
-  }
+//   for (const pair of formData.entries()) {
+//     console.log(pair[0], pair[1]);
+//   }
 
-  fetch(add_url, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${token}`,
-    },
-    body: formData
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to upload data');
-      }
-      return response.json();
-    })
-    .then(result => {
-      console.log('Data uploaded successfully:', result);
-      // Handle success response as needed
-    })
-    .catch(error => {
-      console.error('Error uploading data:', error);
-      // Handle error as needed
-    });
-});
+//   fetch(add_url, {
+//     method: 'POST',
+//     headers: {
+//       'Authorization': `Bearer ${token}`,
+//     },
+//     body: formData
+//   })
+//     .then(response => {
+//       if (!response.ok) {
+//         throw new Error('Failed to upload data');
+//       }
+//       return response.json();
+//     })
+//     .then(result => {
+//       console.log('Data uploaded successfully:', result);
+//       // Handle success response as needed
+//     })
+//     .catch(error => {
+//       console.error('Error uploading data:', error);
+//       // Handle error as needed
+//     });
+// });
 
 
 
@@ -169,7 +169,7 @@ const fetchCampaign = () => {
 fetchCampaign()
 
 const orderVaccines = (id) => {
-  fetch(`http://127.0.0.1:8000/history/order/123`, {
+  fetch(`https://django-final-backend.onrender.com/history/order/123`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -189,7 +189,7 @@ const orderVaccines = (id) => {
 }
 
 const remove_vaccine = (id) => {
-  fetch(`http://127.0.0.1:8000/vaccine/delete/${id}/`, {
+  fetch(`https://django-final-backend.onrender.com/vaccine/delete/${id}/`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -222,7 +222,7 @@ const default_vaccine_id_update = (id) => {
 
 
 const update_vaccine = (id) => {
-    let updateUrl = `http://127.0.0.1:8000/vaccine/update/${id}/`
+    let updateUrl = `https://django-final-backend.onrender.com/vaccine/update/${id}/`
     // console.log(id, updateUrl)
 
     if (!token) {

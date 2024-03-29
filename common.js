@@ -6,7 +6,7 @@ let logged = false;
 //log out
 document.getElementById('logout').addEventListener('submit', function(event) {
     event.preventDefault();
-const url = 'http://127.0.0.1:8000/user/logout/';
+const url = 'https://django-final-backend.onrender.com/user/logout/';
 fetch(url, {
     method: 'GET',
 

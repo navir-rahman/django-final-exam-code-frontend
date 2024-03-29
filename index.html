@@ -133,7 +133,7 @@
 				}
 				console.log(userInfo)
 
-				const url = 'http://127.0.0.1:8000/user/login/';
+				const url = 'https://django-final-backend.onrender.com/user/login/';
 				fetchPostRequest(url, userInfo )
 				.then(data => {
 					localStorage.setItem('token', data.token);
@@ -149,7 +149,7 @@
 			// //log out
 			document.getElementById('logout').addEventListener('click', function(event) {
 			    event.preventDefault();
-			    const url = 'http://127.0.0.1:8000/user/logout/';
+			    const url = 'https://django-final-backend.onrender.com/user/logout/';
 			    fetch(url, {
 			        method: 'GET',
 			        headers: {

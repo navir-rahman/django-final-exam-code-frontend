@@ -25,17 +25,15 @@
       <nav id="nav">
         <ul>
           <li>
-            <a href="../index.html" id="top-link"><span class="icon solid fa-home">Home</span></a>
+            <a href="./home.html" id="top-link"><span class="icon solid fa-home">Home</span></a>
           </li>
-          <li>
-            <a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a>
-          </li>
-          <li>
-            <a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a>
-          </li>
-          <li>
-            <a href="" id="contact-link"><span class="icon solid fa-envelope">Vaccine Campaign</span></a>
-          </li>
+
+
+          <li><a href="./update_vaccine.html" id="updatevaccine"><span class="icon solid fa-user">Update vaccine</span></a></li>
+          <li><a href="./add_camp.html" id="addvaccine"><span class="icon solid fa-user">Add vaccine camp</span></a></li>
+          <li><a href="./vaccine_campaign.html" id="vaccinecamp"><span class="icon solid fa-user">vaccine camp</span></a></li>
+          <li><a href="#" id="logout"><span class="icon solid fa-user">Log out</span></a></li>
+          
         </ul>
       </nav>
     </div>
@@ -65,25 +63,19 @@
   <!-- Main -->
   <div id="main">
 
+    <!-- add new campaign -->
     <section style="padding: 0;">
       <div class="container_for_campgain  p-10 flex">
-        <form class="w-3/5 p-10" id="add_campaign_form" enctype="multipart/form-data">
+        <form class="w-3/5 p-10" id="update_campaign_form" enctype="multipart/form-data">
           <div class="space-y-12">
 
-            <div class="border-b border-gray-900/10 pb-12">
-              <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
-              <p class="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
+            <div class="border-b border-gray-900/10 ">
+              <h2 class="text-base font-semibold leading-7 text-gray-900">Update campaign </h2>
+              <p class="mt-1 text-sm leading-6 text-gray-600">this form work for updating a campaign</p>
 
 
 
               <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                <div class="sm:col-span-3">
-                  <label for="V_ID" class="block text-sm font-medium leading-6 text-gray-900">Vaccine id</label>
-                  <div class="mt-2">
-                    <input value="" type="number" name="V_ID" id="V_ID" autocomplete="given-name"
-                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                  </div>
-                </div>
                 <div class="sm:col-span-3">
                   <label for="v_name" class="block text-sm font-medium leading-6 text-gray-900">Vaccine name</label>
                   <div class="mt-2">
@@ -112,7 +104,7 @@
                   <div class="flex items-center gap-x-3">
                     <input value="" id="status" name="status" type="checkbox"
                       class="h-4 w-4 border-green-300 text-indigo-600 focus:ring-green-600">
-                    <label class="block text-sm font-medium leading-6 text-gray-900">No push notifications</label>
+                    <label class="block text-sm font-medium leading-6 text-gray-900">active your camp</label>
                   </div>
                 </div>
 
@@ -153,27 +145,27 @@
 
               </div>
             </div>
+              <div class="flex items-center justify-between ">
 
                 <div class="sm:col-span-3">
                   <label for="status" class="block text-sm font-medium leading-6 text-gray-900">First Dose</label>
                   <div class="flex items-center gap-x-3">
                     <input value="" id="first_dose_date" name="first_dose_date" type="date"
-                      class=" border-green-300  focus:ring-green-600">
+                    class=" border-green-300  focus:ring-green-600">
                   </div>
                 </div>
-
+                
+                <div class="flex items-center justify-end gap-x-6">
+                  <button type="submit" id="save_form_data"
+                    class=" rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">update camp
+                  </button>
+                </div>
+                
+              </div>
 
           </div>
 
-          <div class="flex items-center justify-end gap-x-6">
-            <button type="submit" id="save_form_data"
-              class=" rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save
-            </button>
-            <button type="btn" id ="update_form_data" onclick="update_vaccine()"
-              class="hide rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-              Update
-            </button>
-          </div>
+         
         </form>
 
         <div class="campgain w-2/5">
@@ -270,6 +262,7 @@
 
 
   <!-- Scripts -->
+  <script src="../django_code/all_url.js"></script>
   <script src="../django_code/main.js"></script>
   <script src="../assets/js/jquery.min.js"></script>
   <script src="../assets/js/jquery.scrolly.min.js"></script>
@@ -280,49 +273,225 @@
   <script src="../assets/js/main.js"></script>
   <script src="../django_code/vaccine.js"></script>
   <script>
+
     var currentUrl = window.location.href;
     var searchParams = new URLSearchParams(currentUrl);
     
-  //  for (let p of searchParams) {
-  //       id = p[1]
-  //   } 
-
-
+    for (let p of searchParams) {
+            camp_id = p[1]
+        } 
 
 window.onload = function () {
 
-  let fd = {
-    "id": 1,
-    "date_taken": "2024-03-05",
-    "vaccine": 72,
-    "patient": 1
-}
-
-
-const fetchPostRequest = (url, data) => {
-    return fetch(`https://django-final-backend.onrender.com/history/all/1/`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json' 
-        },
-        body: data,
-    })
+    fetch(`${all_vaccine_url}${camp_id}`, {
+    method: 'GET',
+    headers: {
+      // 'Authorization': `Bearer ${token}`,
+    },
+  })
     .then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            console.error('Error response:', response); // Log the error response
-            throw new Error('Error response: ' + response.statusText);  
-        }
-    });
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error(response);
+      }
+    })
+    .then(data => {
+      console.log(data)
+
+      
+    //   document.getElementById('all_campaigns').innerHTML = content
+    document.getElementById('v_name').value =data.name
+    document.getElementById('campaign_name').value = data.campaign_name
+    document.getElementById('dose_count').value = data.dose_count
+    document.getElementById('first_dose_date').value = data.first_dose_date
+    // document.getElementById('status').checked ? 1 : 0
+    document.getElementById('description').value = data.description
+    document.getElementById('image').files[0] = data.image
+    })
 }
+// window.onload = function () {
 
-fetchPostRequest(1, fd)
+//   let fd = {
+//     "id": 1,
+//     "date_taken": "2024-03-05",
+//     "vaccine": 72,
+//     "patient": 1
+// }
 
+
+// const fetchPostRequest = (url, data) => {
+//     return fetch(`https://django-final-backend.onrender.com/history/all/1/`, {
+//         method: 'PATCH',
+//         headers: {
+//             'Content-Type': 'application/json' 
+//         },
+//         body: data,
+//     })
+//     .then(response => {
+//         if (response.ok) {
+//             return response.json();
+//         } else {
+//             console.error('Error response:', response); // Log the error response
+//             throw new Error('Error response: ' + response.statusText);  
+//         }
+//     });
+// }
+
+// // fetchPostRequest(1, fd)
+
+// }
+
+
+
+// load all camp
+const fetchCampaign = () => {
+
+
+
+  fetch(all_vaccine_url, {
+    method: 'GET',
+    headers: {
+      // 'Authorization': `Bearer ${token}`,
+    },
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error(response);
+      }
+    })
+    .then(data => {
+      // console.log(data[0])
+
+      let content = ''
+      data.forEach(e => {
+        content += `
+                  <li id='campaign${e.id}'>
+                    <a class="flex py-6" href="/templates/update_vaccine.html?id=${e.id}">
+                    <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                      <img src="${e.image}" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." class="h-full w-full object-cover object-center">
+                    </div>
+
+                    <div class="ml-4 flex flex-1 flex-col">
+                      <div>
+                        <div class="flex justify-between text-base font-medium text-gray-900">
+                          <h3>
+                            ${e.name} Initiated by: ${e.initiated_by} 
+                          </h3>
+                          <p class="ml-4">
+                
+                            Dose Count: ${e.dose_count} 
+                          </p>
+                        </div>
+                        <p class="mt-1 text-sm text-gray-500 text-left">${e.description}</p>
+                      </div>
+                      <div class="flex flex-1 items-end justify-between text-sm">
+                        <p class="text-gray-500">
+                            Date: ${e.initiated_date}
+                          </p>
+                          
+                          ${
+                            user_role != 'doctor' ?
+                            `<div class="flex"><button onclick="orderVaccines(${e.id})" type="button" class="font-medium text-indigo-600 bg-green-400 button border border-indigo-600 hover:text-indigo-500">Add </button></div>`
+                          : 
+                          `<div class="flex"><button onclick ="remove_vaccine(${e.id})" type="button" class="font-medium text-indigo-600 bg-red-400 button border border-indigo-600 hover:text-indigo-500 ">Remove</button></div>`
+                          }
+                        
+                      </div>
+                    </div>
+                </a>
+                  </li>
+                  `
+      });
+      document.getElementById('all_campaigns').innerHTML = content
+    })
 
 }
+fetchCampaign()
 
 
+// add new vaccine
+document.getElementById('update_campaign_form').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const token = localStorage.getItem('token');
+
+
+
+
+  if (!token) {
+    console.error('Token not found');
+    return;
+  }
+
+      // Send a POST request to the login API endpoint
+
+      let formData = new FormData();
+      formData.append('id', camp_id);
+      formData.append('name', document.getElementById('v_name').value);
+      formData.append('campaign_name', document.getElementById('campaign_name').value);
+      formData.append('dose_count', document.getElementById('dose_count').value);
+      formData.append('first_dose_date', document.getElementById('first_dose_date').value);
+      formData.append('status', document.getElementById('status').checked ? 1 : 0);
+      formData.append('description', document.getElementById('description').value);
+      if (document.getElementById('image').files[0] != undefined) {
+        formData.append('image', document.getElementById('image').files[0]);
+      }
+
+      for (const pair of formData.entries()) {
+        console.log(pair[0], pair[1]);
+      }
+      fetch(`${all_vaccine_url}${camp_id}/`, {
+                method: 'PUT',
+                headers: {
+
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('camp save failed');
+                }
+                else{
+                  location.reload();
+                  return response.json();
+                }
+            })
+            // .then(data => {
+            //     // Handle successful login response
+            //   // console.log(data)
+              
+            // })
+            .catch(error => {
+                console.error('Login failed:', error);
+            });	
+
+})
+
+// delete camp 
+const remove_vaccine = (id) => {
+  fetch(`${delete_camp_url}${id}/`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+
+    },
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }else{
+      location.reload();
+    }
+    // Handle successful response
+  })
+  .catch(error => {
+    console.error('There was a problem with the fetch operation:', error);
+  });
+}
 </script>
 </body>
 

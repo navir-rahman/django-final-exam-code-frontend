@@ -28,8 +28,8 @@
         <nav id="nav">
           <ul>
             <li>
-              <a href="#top" id="top-link"
-                ><span class="icon solid fa-home">Intro</span></a
+              <a href="../index.html" id="top-link"
+                ><span class="icon solid fa-home">Login</span></a
               >
             </li>
             <li>
@@ -42,11 +42,12 @@
                 ><span class="icon solid fa-user">About Me</span></a
               >
             </li>
-            <li>
-              <a href="./vaccine_campaign.html" id="contact-link"
-                ><span class="icon solid fa-envelope">Vaccine Campaign</span></a
-              >
-            </li>
+
+            <li><a href="./update_vaccine.html" id="updatevaccine"><span class="icon solid fa-user">Update vaccine</span></a></li>
+            <li><a href="./add_camp.html" id="addvaccine"><span class="icon solid fa-user">Add vaccine camp</span></a></li>
+
+            <li><a href="./vaccine_campaign.html" id="vaccinecamp"><span class="icon solid fa-user">vaccine camp</span></a></li>
+            <li><a href="#" id="logout"><span class="icon solid fa-user">Log out</span></a></li>
           </ul>
         </nav>
       </div>
@@ -201,6 +202,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="../django_code/all_url.js"></script>
     <script src="../django_code/main.js"></script>
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/jquery.scrolly.min.js"></script>
@@ -211,7 +213,7 @@
     <script src="../assets/js/main.js"></script>
     <script>
 
-        let url ='https://django-final-backend.onrender.com/user/profile/'
+        
 
         const token = localStorage.getItem('token'); 
         const user_id = localStorage.getItem('user_id');
@@ -224,7 +226,7 @@
       }
     
 
-    fetch(url, {
+    fetch(profile_url, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -293,7 +295,7 @@ document.getElementById('update_form').addEventListener('submit', function(event
 					let user_role = event.target.user_role.value
 					// let past_medical_reports = event.target.past_medical_reports.value
 					let date_of_birth = event.target.date_of_birth.value
-					let data = {
+					let userInfo = {
 									"username": username,
 									"first_name": first_name,
 									"last_name": last_name,
@@ -304,10 +306,32 @@ document.getElementById('update_form').addEventListener('submit', function(event
 									// "past_medical_reports": past_medical_reports,
 									"date_of_birth": date_of_birth,
 								}
-                // console.log(data)
-fetchPostRequest(url, data)
+                
+            fetch(profile_url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userInfo)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('update failed');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Handle successful  response
+                
+            })
+            .catch(error => {
+                console.error('Login failed:', error);
+            });
 
-})
+			})
+// fetchPostRequest(profile_url, data)
+
+// })
     </script>
   </body>
 </html>

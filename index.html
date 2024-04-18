@@ -24,10 +24,10 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="#login" id="top-link"><span class="icon solid fa-user">Login</span></a></li>
+								
 								<li><a href="./templates/register.html" id="portfolio-link"><span class="icon solid fa-th">Register</span></a></li>
-								<li><a href="#" id="logout"><span class="icon solid fa-user">Log out</span></a></li>
-								<li><a href="./templates/home.html" id="logout"><span class="icon solid fa-user">Home</span></a></li>
+								
+								
 								
 							</ul>
 						</nav>
@@ -113,6 +113,7 @@
 
 		<!-- Scripts -->
 			<script src="./django_code/main.js"></script>
+			<script src="./django_code/all_url.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -131,52 +132,40 @@
 					"username": username,
 					"password": password,
 				}
-				console.log(userInfo)
-
-				const url = 'https://django-final-backend.onrender.com/user/login/';
-				fetchPostRequest(url, userInfo )
-				.then(data => {
+				
+            // Send a POST request to the login API endpoint
+            fetch(login_url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userInfo)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Login failed');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Handle successful login response
+				if (data.token) {
+					console.log('Login successful:', data);
 					localStorage.setItem('token', data.token);
 					localStorage.setItem('user_id', data.user_id);
 					localStorage.setItem('user_role', data.user_role);
-					console.log('Token data saved:', data);
-				})
-				.catch(error => {
-					console.error('Error:', error);
-					});
-			})
-
-			// //log out
-			document.getElementById('logout').addEventListener('click', function(event) {
-			    event.preventDefault();
-			    const url = 'https://django-final-backend.onrender.com/user/logout/';
-			    fetch(url, {
-			        method: 'GET',
-			        headers: {
-						'Authorization': `Bearer ${localStorage.getItem('token')}`,
-			        },
-			    })
-			        .then(response => {
-			        if (response.ok) {
-			            return response.json();
-			        } else {
-			            console.log(response)
-			            throw new Error('Failed to logout: ' + response);
-			        }
-			        })
-			        .then(data => {
-			            localStorage.getItem('token', data.token);
-			            localStorage.removeItem('token');
-			            logged = false;
-			            console.log(data.data);
-			            // window.location.href = '/dashboard';
-
-			        })
-			        .catch(error => {
-			        console.error('Error:', error);
-			        });
+					localStorage.setItem('logged', true);
+					// redirect
+					window.location.href= home_url
+				}
+            })
+            .catch(error => {
+                console.error('Login failed:', error);
+            });
 
 			})
+
+
 			</script>
 
 	</body>

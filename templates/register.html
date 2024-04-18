@@ -24,10 +24,8 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="#login" id="top-link"><span class="icon solid fa-user">Login</span></a></li>
-								<li><a href="./templates/register.html" id="portfolio-link"><span class="icon solid fa-th">Register</span></a></li>
-								<li><a href="#" id="logout"><span class="icon solid fa-user">Log out</span></a></li>
-								
+								<li><a href="../index.html" id="top-link"><span class="icon solid fa-user">Login</span></a></li>
+
 							</ul>
 						</nav>
 
@@ -100,6 +98,7 @@
 			</div>
 
 		<!-- Scripts -->
+			<script src="../django_code/all_url.js"></script>
 			<script src="../django_code/main.js"></script>
 			<script src="../assets/js/jquery.min.js"></script>
 			<script src="../assets/js/jquery.scrolly.min.js"></script>
@@ -113,34 +112,84 @@
 				// sign up
 				document.getElementById('register_submit').addEventListener('submit', function(event) {
 					event.preventDefault();
-					const url = 'https://django-final-backend.onrender.com/user/register/';
 
-					let username = event.target.username.value
-					let first_name = event.target.first_name.value
-					let last_name = event.target.last_name.value
-					let email = event.target.email.value
-					let password = event.target.password.value
-					let confirm_password = event.target.confirm_password.value
-					let nid = event.target.nid.value
-					let user_role = event.target.user_role.value
-					let past_medical_reports = event.target.past_medical_reports.value
-					let date_of_birth = event.target.date_of_birth.value
+					// Define the URL of your API endpoint
+const apiUrl = 'http://127.0.0.1:8000/user/register/';
 
-					let data = {
-									"username": username,
-									"first_name": first_name,
-									"last_name": last_name,
-									"email": email,
-									"password": password,
-									"confirm_password": confirm_password,
-									"nid": nid,
-									"user_role": user_role,
-									"past_medical_reports": past_medical_reports,
-									"date_of_birth": date_of_birth,
-								}
+// Define the data you want to send in the request body
+const requestData = {
+    username: 'uss3er',
+    first_name: 'John',
+    last_name: 'Doe',
+    email: 'abdur_rahman@mail.com',
+    password: '!1234qwer',
+    confirm_password: '!1234qwer',
+    nid: '1234567890',
+    user_role: 'patient',
+    past_medical_reports: 'No past medical reports',
+    date_of_birth: '1990-01-01' // Example date format, adjust as needed
+};
+
+// Configure the request
+const requestOptions = { 
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(requestData)
+};
+
+// Send the POST request
+fetch(apiUrl, requestOptions)
+    .then(response => {
+        // Check if the request was successful
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        // Parse the JSON response
+        return response.json();
+    })
+    .then(data => {
+        // Handle the API response data
+        console.log('API response:', data);
+        // Further processing if needed
+    })
+    .catch(error => {
+        // Handle errors
+        console.error('Error:', error);
+    });
+
+				// 	const url = 'http://127.0.0.1:8000/user/register/';
+
+				// 	let username = event.target.username.value
+				// 	let first_name = event.target.first_name.value
+				// 	let last_name = event.target.last_name.value
+				// 	let email = event.target.email.value
+				// 	let password = event.target.password.value
+				// 	let confirm_password = event.target.confirm_password.value
+				// 	let nid = event.target.nid.value
+				// 	let user_role = event.target.user_role.value
+				// 	let past_medical_reports = event.target.past_medical_reports.value
+				// 	let date_of_birth = event.target.date_of_birth.value
+
+				// 	let data = {
+				// 					"username": username,
+				// 					"first_name": first_name,
+				// 					"last_name": last_name,
+				// 					"email": email,
+				// 					"password": password,
+				// 					"confirm_password": confirm_password,
+				// 					"nid": nid,
+				// 					"user_role": user_role,
+				// 					"past_medical_reports": past_medical_reports,
+				// 					"date_of_birth": date_of_birth,
+				// 				}
 								
+				// 				fetchGetRequest(url)
+				// 				.then( function (response) { console.log(response); });
 
-					fetchRequest(data, url);
+				// 				fetchPostRequest(data, url)
+				// 				.then( function (response) { console.log(response); });
 
 				});
 

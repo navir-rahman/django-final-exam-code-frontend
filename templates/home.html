@@ -27,31 +27,13 @@
         <!-- Nav -->
         <nav id="nav">
           <ul>
-            <li>
-              <a href="#top" id="top-link"
-                ><span class="icon solid fa-home">Intro</span></a
-              >
-            </li>
-            <li>
-              <a href="#portfolio" id="portfolio-link"
-                ><span class="icon solid fa-th">Portfolio</span></a
-              >
-            </li>
-            <li>
-              <a href="#about" id="about-link"
-                ><span class="icon solid fa-user">About Me</span></a
-              >
-            </li>
-            <li>
-              <a href="#contact" id="contact-link"
-                ><span class="icon solid fa-envelope">Contact</span></a
-              >
-            </li>
-            <li>
-              <a href="./profile.html" id="contact-link"
-                ><span class="icon solid fa-envelope">profile</span></a
-              >
-            </li>
+
+
+            <li><a href="./update_vaccine.html" id="updatevaccine"><span class="icon solid fa-user">Update vaccine</span></a></li>
+            <li><a href="./add_camp.html" id="addvaccine"><span class="icon solid fa-user">Add vaccine camp</span></a></li>
+            <li><a href="./vaccine_campaign.html" id="vaccinecamp"><span class="icon solid fa-user">vaccine camp</span></a></li>
+            <li><a href="#" id="logout"><span class="icon solid fa-user">Log out</span></a></li>
+
           </ul>
         </nav>
       </div>
@@ -216,7 +198,9 @@
     </div>
 
     <!-- Scripts -->
+    <script src="../django_code/all_url.js"></script>
     <script src="../django_code/main.js"></script>
+
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/jquery.scrolly.min.js"></script>
     <script src="../assets/js/jquery.scrollex.min.js"></script>
@@ -229,12 +213,13 @@
         fetchGetRequest(all_vaccines_url)
             .then(data => {
     
+              console.log(data)
                 let content ='';
                 data.forEach(d => {
                     content += `	
                     <div class="group relative">
                         <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                            <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                            <img src="${d.image}" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
                         </div>
                         <p class="text-sm font-sm text-black-900"> ${d.description}</p>
                     <div class="mt-4 flex justify-between">

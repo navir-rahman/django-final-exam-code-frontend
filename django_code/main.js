@@ -1,4 +1,4 @@
-const all_vaccines_url = `http://127.0.0.1:8000/vaccine/all_vaccine/`;
+
 
 
 const fetchGetRequest = (url) => {

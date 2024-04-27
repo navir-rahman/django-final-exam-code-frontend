@@ -209,39 +209,57 @@
     <script src="../assets/js/util.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
+
       window.onload = function() {
-        fetchGetRequest(all_vaccines_url)
-            .then(data => {
+
+          fetch(all_vaccine_url, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json' 
+              },
+          })
+          .then(response => {
+              if (response.ok) {
+                  
+                  return response.json();
+              } else {
+                  console.log(response);
+                  throw new Error('Error response: ' + response);
+              }
+          })
+          .then(data => {
     
-              console.log(data)
-                let content ='';
-                data.forEach(d => {
-                    content += `	
-                    <div class="group relative">
-                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                            <img src="${d.image}" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-                        </div>
-                        <p class="text-sm font-sm text-black-900"> ${d.description}</p>
-                    <div class="mt-4 flex justify-between">
-                      <div>
-                        <h3 class="text-sm text-gray-700">
-                            <p class="text-sm font-medium text-gray-900">${d.name}</p>
-                        </h3>
-                        <p class="mt-1 text-sm text-gray-500">Total Dose :${d.dose_count}</p>
+            console.log(data)
+              let content ='';
+              data.forEach(d => {
+                  content += `	
+                  <div class="group relative">
+                      <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                          <img src="${d.image}" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
                       </div>
-                      <p class="text-sm font-medium text-gray-900">${d.status ? '<span class="bg-green-400 text-green-400 rounded-full">oio</span> Active' : '<span class="bg-red-400 text-red-400 rounded-full">oio</span> Inactive'} </p>
+                      <p class="text-sm font-sm text-black-900"> ${d.description}</p>
+                  <div class="mt-4 flex justify-between">
+                    <div>
+                      <h3 class="text-sm text-gray-700">
+                          <p class="text-sm font-medium text-gray-900">${d.name}</p>
+                      </h3>
+                      <p class="mt-1 text-sm text-gray-500">Total Dose :${d.dose_count}</p>
                     </div>
+                    <p class="text-sm font-medium text-gray-900">${d.status ? '<span class="bg-green-400 text-green-400 rounded-full">oio</span> Active' : '<span class="bg-red-400 text-red-400 rounded-full">oio</span> Inactive'} </p>
                   </div>
-     
-                                `
-                });
-    
-                document.getElementById('all_vaccines').innerHTML= content;
-                
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                </div>
+
+                              `
+              });
+
+              document.getElementById('all_vaccines').innerHTML= content;
+              
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+
+
     };
     
     </script>

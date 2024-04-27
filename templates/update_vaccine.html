@@ -368,12 +368,12 @@ const fetchCampaign = () => {
       let content = ''
       data.forEach(e => {
         content += `
-                  <li id='campaign${e.id}'>
-                    <a class="flex py-6" href="/templates/update_vaccine.html?id=${e.id}">
+                  <li class="flex py-6" id='campaign${e.id}'>
                     <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                      <img src="${e.image}" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." class="h-full w-full object-cover object-center">
+                        <a href="/templates/update_vaccine.html?id=${e.id}">
+                            <img src="${e.image}" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." class="h-full w-full object-cover object-center">
+                        </a>
                     </div>
-
                     <div class="ml-4 flex flex-1 flex-col">
                       <div>
                         <div class="flex justify-between text-base font-medium text-gray-900">
@@ -401,7 +401,7 @@ const fetchCampaign = () => {
                         
                       </div>
                     </div>
-                </a>
+                
                   </li>
                   `
       });
